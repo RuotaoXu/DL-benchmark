@@ -3,7 +3,7 @@ import pickle
 from tabulate import tabulate
 
 from benchmark import models, precisions, frameworks
-
+frameworks = ['pytorch']
 def print_as_table(file):
     results = pickle.load(open(file, 'rb'))
 
@@ -11,7 +11,10 @@ def print_as_table(file):
     for fw in frameworks:
         for precision in precisions:
             precision_display = '32-bit' if precision == 'fp32' else '16-bit'
-            if fw in results:
+            if len(frameworks)==1:
+                row = ['{:.1f}ms'.format(v) if v > 0 else '' for v in results[precision]]
+                rows.append([fw, precision_display] + row)
+            elif fw in results:
                 row = ['{:.1f}ms'.format(v) if v > 0 else '' for v in results[fw][precision]]
                 rows.append([fw, precision_display] + row)
 
