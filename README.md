@@ -1,3 +1,4 @@
+# Fork from https://github.com/u39kun/deep-learning-benchmark.git
 # Benchmark on Deep Learning Frameworks and GPUs
 
 Performance of popular deep learning frameworks and GPUs are compared, including the effect of adjusting the floating point precision (the new Volta architecture allows performance boost by utilizing half/mixed-precision calculations.)
